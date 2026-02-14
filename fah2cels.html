@@ -1,0 +1,22 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fahrenheit to Celsius Converter</title>
+</head>
+<body>
+    <h1>Fahrenheit to Celsius Converter</h1>
+
+    <script>
+        // Ask the user to enter a temperature in Fahrenheit
+        const fahrenheit = parseFloat(prompt("Enter a temperature in Fahrenheit:"));
+
+        // Convert the temperature to Celsius
+        const celsius = (fahrenheit - 32) * 5 / 9;
+
+        // Display the result with two decimal places
+        // ref: https://www.w3schools.com/jsref/jsref_tofixed.asp
+        document.write(fahrenheit + " degrees Fahrenheit is equal to " + celsius.toFixed(2) + " degrees Celsius.");
+    </script>
+</body>
+</html>
