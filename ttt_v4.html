@@ -48,7 +48,7 @@
         .player-turn {
             font-size: 14px;
             margin: 0 auto 20px;
-            width: 150px;
+            width: 250px;
             color: green;
             border: 1px solid green;
             border-radius: 10px;
@@ -84,13 +84,10 @@
                     const randomIndex = Math.floor(Math.random() * playerTurn.length);
 
                     return playerTurn.charAt(randomIndex);
-                    
-                    if (playerTurn === "X") {
-                        playerTurn = "O";
-                    } else {
-                        playerTurn = "X";
-                    }
+                
                 }
+
+            let currentPlayer = getRandomPlayerTurn();
 
             window.onload = function() {
                 // Identify which square was clicked
@@ -99,7 +96,7 @@
                         alert("You clicked on square " + this.id); 
 
                         if (this.innerHTML === "") {
-                            this.innerHTML = "X";
+                            this.innerHTML = currentPlayer;
                         }
 
                     }
@@ -114,7 +111,7 @@
         <script>
 
             // Draw the player turn element with a random player turn
-            document.write("<div class='player-turn'>Player " + getRandomPlayerTurn() + "'s Turn</div>");
+            document.querySelector(".player-turn h2").innerHTML = currentPlayer + "'s Turn";
 
 
             // draw the tic tac toe board
