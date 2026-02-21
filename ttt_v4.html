@@ -1,5 +1,5 @@
 <!-- Project URL: -->
-<!-- https://pochat.github.io/tic-tac-toe/ttt_v3.html -->
+<!-- https://pochat.github.io/tic-tac-toe/ttt_v4.html -->
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -60,9 +60,6 @@
         }
 
     </style>
-</head>
-
-<body>
 
     <div class="board">
         <h1>Tic Tac Toe Game</h1>
@@ -73,24 +70,12 @@
 
         <script>
 
+            // Global parameters
             // Define the number of squares on the tic tac toe board
             const NUM_SQUARES = 9;
 
-
-            window.onload = function() {
-                // Identify which square was clicked
-                for (i = 0; i < NUM_SQUARES; i++) {
-                    document.getElementById("sq" + i).onclick = function() {
-                        alert("You clicked on square " + this.id); 
-
-                        if (this.innerHTML === "") {
-                            this.innerHTML = "X";
-                        }
-
-                    }
-                };
-
-                function getRandomPlayerTurn() {
+            // Function to randomly select which player goes first
+            function getRandomPlayerTurn() {
                     
                     // Get letters
                     const playerTurn = "XO";
@@ -106,27 +91,42 @@
                         playerTurn = "X";
                     }
                 }
-                
+
+            window.onload = function() {
+                // Identify which square was clicked
+                for (i = 0; i < NUM_SQUARES; i++) {
+                    document.getElementById("sq" + i).onclick = function() {
+                        alert("You clicked on square " + this.id); 
+
+                        if (this.innerHTML === "") {
+                            this.innerHTML = "X";
+                        }
+
+                    }
+                };
             };
-            
-            
-            </script>
 
-<script>
-    
-    // draw the tic tac toe board
-    for (i = 0; i < NUM_SQUARES; i++) {
-        document.write("<div class='square' id='sq" + i + "'></div>");
-    }
-    
-    </script>
 
-document.write("<div class='player-turn'>Player " + getRandomPlayerTurn() + "'s Turn</div>");
+        </script>
+</head>
 
+<body>
+        <script>
+
+            // Draw the player turn element with a random player turn
+            document.write("<div class='player-turn'>Player " + getRandomPlayerTurn() + "'s Turn</div>");
+
+
+            // draw the tic tac toe board
+            for (i = 0; i < NUM_SQUARES; i++) {
+                document.write("<div class='square' id='sq" + i + "'></div>");
+            }
+
+        </script>
         <button class="start-game-button">Start New Game</button>
         <a class="small-text" href="https://en.wikipedia.org/wiki/Tic-tac-toe" target="_blank">Game Instructions on Wikipedia</a>
     </div>
 
-
 </body>
+
 </html>
