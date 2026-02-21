@@ -76,6 +76,7 @@
             // Define the number of squares on the tic tac toe board
             const NUM_SQUARES = 9;
 
+
             window.onload = function() {
                 // Identify which square was clicked
                 for (i = 0; i < NUM_SQUARES; i++) {
@@ -88,20 +89,39 @@
 
                     }
                 };
+
+                function getRandomPlayerTurn() {
+                    
+                    // Get letters
+                    const playerTurn = "XO";
+
+                    // Get random index
+                    const randomIndex = Math.floor(Math.random() * playerTurn.length);
+
+                    return playerTurn.charAt(randomIndex);
+                    
+                    if (playerTurn === "X") {
+                        playerTurn = "O";
+                    } else {
+                        playerTurn = "X";
+                    }
+                }
+                
             };
+            
+            
+            </script>
 
+<script>
+    
+    // draw the tic tac toe board
+    for (i = 0; i < NUM_SQUARES; i++) {
+        document.write("<div class='square' id='sq" + i + "'></div>");
+    }
+    
+    </script>
 
-        </script>
-
-        <script>
-
-            // draw the tic tac toe board
-            for (i = 0; i < NUM_SQUARES; i++) {
-                document.write("<div class='square' id='sq" + i + "'></div>");
-            }
-
-        </script>
-
+document.write("<div class='player-turn'>Player " + getRandomPlayerTurn() + "'s Turn</div>");
 
         <button class="start-game-button">Start New Game</button>
         <a class="small-text" href="https://en.wikipedia.org/wiki/Tic-tac-toe" target="_blank">Game Instructions on Wikipedia</a>
