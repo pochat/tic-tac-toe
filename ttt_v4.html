@@ -121,6 +121,8 @@
 <body>
         <script>
 
+            // Render the first player turn on the page load
+            document.querySelector(".player-turn h2").innerHTML = currentPlayer + "'s Turn";
 
             // draw the tic tac toe board
             for (i = 0; i < NUM_SQUARES; i++) {
