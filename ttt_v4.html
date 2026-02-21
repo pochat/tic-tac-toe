@@ -87,18 +87,29 @@
                 
                 }
 
+            // Pick the first player turn from the random
             let currentPlayer = getRandomPlayerTurn();
 
             window.onload = function() {
                 // Identify which square was clicked
                 for (i = 0; i < NUM_SQUARES; i++) {
                     document.getElementById("sq" + i).onclick = function() {
-                        alert("You clicked on square " + this.id); 
+
+                        // alert("You clicked on square " + this.id); 
 
                         if (this.innerHTML === "") {
                             this.innerHTML = currentPlayer;
+                        } else {
+                            alert("Square already taken! Please choose another square.");
+                            return;
                         }
+                        if (currentPlayer === "X") {
+                            currentPlayer = "O";
+                        } else {
+                            currentPlayer = "X";
 
+                    }
+                        document.querySelector(".player-turn h2").innerHTML = currentPlayer + "'s Turn";
                     }
                 };
             };
@@ -109,9 +120,6 @@
 
 <body>
         <script>
-
-            // Draw the player turn element with a random player turn
-            document.querySelector(".player-turn h2").innerHTML = currentPlayer + "'s Turn";
 
 
             // draw the tic tac toe board
