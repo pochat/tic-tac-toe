@@ -145,8 +145,47 @@
                         });
 
                         console.log("moves:", moves);
+
+                        const winConditions = [
+
+                        // Three horizontal rows
+                            moves[0] + moves[1] + moves[2], // Top Row
+                            moves[3] + moves[4] + moves[5], // Middle Row
+                            moves[6] + moves[7] + moves[8], // Bottom Row
+                            
+                            // Three vertical columns
+                            moves[0] + moves[3] + moves[6], // Left column
+                            moves[1] + moves[4] + moves[7], // Middle column
+                            moves[2] + moves[5] + moves[8], // Right column
+
+                            // Top left to bottom right diagonal
+                            moves[0] + moves[4] + moves[8],
+
+                            // Bottom right to top right diagonal
+                            moves[6] + moves[4] + moves[2],
+
+                        ]
                         
+                        // Compare and see if there's a win
+                        for (let i = 0; i < winConditions.length; i++) {
+
+                            if (winConditions[i] === "XXX") {
+                                alert("X wins")
+                                restartGame()
+                                return
+                            } 
+
+                            if (winConditions[i] === "OOO") {
+                                alert("0 wins")
+                                restartGame()
+                                return
+                            }                             
+                        }
                         
+                        // Check if it's a tie
+                        if (!moves.includes("-")) {
+                            alert("It's a tie!");
+                        }
                     }
                     
                 };
