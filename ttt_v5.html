@@ -115,15 +115,7 @@
                 for (i = 0; i < NUM_SQUARES; i++) {
                     document.getElementById("sq" + i).onclick = function() {
                         
-                        alert("You clicked on square " + this.id); 
-                    
-                        // add the move to the array
-                        moves.push(this.id);
-                        console.log("moves: ", moves);
-
-                        function addToMovesArra(move) {
-                            return move.toLowerCase();
-                        }
+                        // alert("You clicked on square " + this.id); 
                         
                         if (this.innerHTML === "") {
                             this.innerHTML = currentPlayer;
@@ -139,6 +131,22 @@
                         
                         // Update the player turn display
                         document.querySelector(".player-turn h2").innerHTML = currentPlayer + "'s Turn";
+
+                        // Build the array from the Board
+                        const buildArrayFromBoard = Array.from(document.querySelectorAll('.square'))
+
+                        // Map the array
+                        moves = buildArrayFromBoard.map(eachSquare => {
+                          if (eachSquare.innerHTML === "") {
+                            return "-";
+                          } else {
+                            return eachSquare.innerHTML;
+                          }
+                        });
+
+                        console.log("moves:", moves);
+                        
+                        
                     }
                     
                 };
