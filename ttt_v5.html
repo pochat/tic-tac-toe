@@ -91,6 +91,9 @@
 
             function restartGame() {
 
+                // Play sound
+                playStartGameSound();
+
                 // clear the array
                 moves = [];
                 console.log("moves:" + moves);
@@ -105,6 +108,17 @@
                 document.querySelector(".player-turn h2").innerHTML = currentPlayer + "'s Turn";
             }
 
+            // Winning sound
+            function playWinSound() {
+                const audioWin = new Audio('playWinSound.mp3');
+                audioWin.play();
+            }
+            
+            // Start game sound
+            function playStartGameSound() {
+                const audioWin = new Audio('playairblow.mp3');
+                audioWin.play();
+            }
             
 
             // Pick the first player turn from the random function
@@ -170,15 +184,21 @@
                         for (let i = 0; i < winConditions.length; i++) {
 
                             if (winConditions[i] === "XXX") {
-                                alert("X wins")
-                                restartGame()
-                                return
+                                playWinSound();
+                                setTimeout(() => {
+                                    alert("X wins");
+                                    restartGame();
+                                }, 500); // Add bit of a delay
+                                return;
                             } 
 
                             if (winConditions[i] === "OOO") {
-                                alert("0 wins")
-                                restartGame()
-                                return
+                                playWinSound();
+                                setTimeout(() => {
+                                    alert("O wins");
+                                    restartGame();
+                                }, 500); // Add bit of a delay
+                                return;
                             }                             
                         }
                         
@@ -190,9 +210,6 @@
                     
                 };
             };
-
-
-
         </script>
 </head>
 
