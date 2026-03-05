@@ -59,6 +59,11 @@
             background-color: rgb(240, 240, 240);
         }
 
+        body.game-over .square {
+            pointer-events: none;
+            opacity: 0.5;
+        }
+
     </style>
 
     <div class="board">
@@ -72,6 +77,7 @@
 
             // Global parameters
             moves = [];
+
 
             // Define the number of squares on the tic tac toe board
             const NUM_SQUARES = 9;
@@ -104,8 +110,18 @@
                 }
                 // Pick a new random player turn
                 currentPlayer = getRandomPlayerTurn();
+
                 // Update the player turn display
                 document.querySelector(".player-turn h2").innerHTML = currentPlayer + "'s Turn";
+
+                // Allow the user to press the squares
+                // Web3schools reference: https://www.w3schools.com/howto/howto_js_add_class.asp
+                document.body.classList.remove("game-over");
+            }
+
+            // Don't let the player click after the game is over
+            function dissallow() {
+                document.body.classList.add("game-over");
             }
 
             // Winning sound
@@ -120,7 +136,6 @@
                 audioWin.play();
             }
             
-
             // Pick the first player turn from the random function
             let currentPlayer = getRandomPlayerTurn();
 
@@ -162,7 +177,7 @@
 
                         const winConditions = [
 
-                        // Three horizontal rows
+                            // Three horizontal rows
                             moves[0] + moves[1] + moves[2], // Top Row
                             moves[3] + moves[4] + moves[5], // Middle Row
                             moves[6] + moves[7] + moves[8], // Bottom Row
@@ -187,8 +202,8 @@
                                 playWinSound();
                                 setTimeout(() => {
                                     alert("X wins");
-                                    restartGame();
-                                }, 500); // Add bit of a delay
+                                    dissallow();
+                                }, 500); // Add bit of a delay to allow the sound to play
                                 return;
                             } 
 
@@ -196,8 +211,8 @@
                                 playWinSound();
                                 setTimeout(() => {
                                     alert("O wins");
-                                    restartGame();
-                                }, 500); // Add bit of a delay
+                                    dissallow();
+                                }, 500); // Add bit of a delay to alloow the sound to play
                                 return;
                             }                             
                         }
